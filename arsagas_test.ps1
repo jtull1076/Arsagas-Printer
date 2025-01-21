@@ -2,6 +2,7 @@
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
+
 # Check if any arguments were passed
 if ($Args.Count -eq 0) {
     $MessageBoxOptions = [System.Windows.Forms.MessageBoxButtons]::OK
@@ -29,7 +30,7 @@ $pictureBox.Size = New-Object System.Drawing.Size(160, 90)  # Adjust size of the
 
 # Ensure $form.Width and $pictureBox.Width are integers before performing subtraction
 $pictureBox.Location = New-Object System.Drawing.Point([int](($form.Width - $pictureBox.Width) / 2), 10)  # Center horizontally
-$pictureBox.Image = [System.Drawing.Image]::FromFile("C:\Users\jerem\Scripts\arsagas_logo.png")  # Replace with your logo file path
+$pictureBox.Image = [System.Drawing.Image]::FromFile("C:\Users\jerem\Documents\Projects\Arsaga's\Arsaga's Printing\arsagas_logo.png")  # Replace with your logo file path
 $form.Controls.Add($pictureBox)
 
 # Add a label
@@ -77,8 +78,8 @@ $sumatra = "C:\Users\whole\AppData\Local\SumatraPDF\SumatraPDF.exe"
 foreach ($file in $FilesToPrint) {
     # Validate the file exists
     if (Test-Path $file) {
-        $printerName = "Afinia L801 Label Printer - SHIPPING LABEL"  # Replace with your printer name
-        $printSettings = "${copies}x,fit,paper=6x4 Shipping Label"  # Replace with your print settings
+        $printerName = "Afinia L801 Label Printer - 12oz Label"  # Replace with your printer name
+        $printSettings = "${copies}x,fit"  # Replace with your print settings
 
         # Construct the SumatraPDF command
         $command = "$sumatra -print-to `"$printerName`" -print-settings `"$printSettings`" `"$file`""
